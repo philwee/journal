@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>our journal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        input, textarea {
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h2>What was the best part of your day?</h2>
+    <p id="prompt">(just type down the first thing that comes to mind)</p>
+
+    <form id="journalForm">
+        <textarea name="response" placeholder="Your answer..." required></textarea>
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById('journalForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Here, you'll send the data to Google AppScript
+            var formData = new FormData(e.target);
+            
+            // Example: Send formData to Google AppScript
+            // You'll replace the URL below with your Google AppScript web app URL
+            fetch('https://script.google.com/macros/s/AKfycbzTmpGaURYPXU2uduYxd5EIvbfEP8IXF-mk__nwHPYWd5ukBH1_1q3cKYwi2fbjQ2u-bw/exec', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            // .then(data => {
+            //     if(data.success) {
+            //         alert('Response saved!');
+                    
+            //     } else {
+            //         alert('Error saving response. Please try again.');
+            //     }
+            // });
+            setTimeout(function(){ window.location.href = "resp.html"; }, 1000);
+            // window.location.href = "resp.html";
+        });
+    </script>
+</body>
+</html>

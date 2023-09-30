@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>everyone's responses</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .entry {
+            border-bottom: 1px solid #e0e0e0;
+            padding: 20px 0;
+        }
+
+        .entry:last-child {
+            border-bottom: none;
+        }
+
+        .entry h3 {
+            margin: 0;
+            color: #4CAF50;
+        }
+        
+        .entry p {
+            margin: 10px 0;
+        }
+        
+        #loading {
+            text-align: center;
+            font-style: italic;
+        }
+        
+    </style>
+</head>
+<body>
+    <h2>everyone's responses: </h2>
+    <!-- Loading message -->
+    <div id="loading">Fetching responses...</div>
+    <div id="responses"></div>
+
+    <script>
+        fetch('https://script.google.com/macros/s/AKfycbzTmpGaURYPXU2uduYxd5EIvbfEP8IXF-mk__nwHPYWd5ukBH1_1q3cKYwi2fbjQ2u-bw/exec')
+        .then(response => response.json())
+        .then(data => {
+            // Hide loading message
+            document.getElementById('loading').style.display = 'none';
+            
+            var responseContainer = document.getElementById('responses');
+            
+            data.forEach(entry => {
+                var div = document.createElement('div');
+                div.className = 'entry';
+                
+                var name = document.createElement('h3');
+                name.textContent = entry.name;
+                
+                var response = document.createElement('p');
+                response.textContent = entry.response;
+                
+                div.appendChild(name);
+                div.appendChild(response);
+                
+                responseContainer.appendChild(div);
+            });
+        })
+        .catch(error => {
+            // Hide loading message and show error
+            document.getElementById('loading').textContent = 'Error fetching responses. Please try again later.';
+        });
+    </script>
+</body>
+</html>
