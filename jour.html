@@ -5,37 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>our journal</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+body {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
 
-        input, textarea {
-            padding: 10px;
-            width: 100%;
-            box-sizing: border-box;
-        }
+input, textarea {
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
 
-        button {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-        }
+button {
+    padding: 20px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
 
-        button:hover {
-            background-color: #45a049;
-        }
+button:hover {
+    background-color: #45a049;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+
+    input, textarea {
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1.2rem;
+}
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    p#prompt {
+        font-size: 1.2rem;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -43,7 +63,7 @@
     <p id="prompt">(just type down the first thing that comes to mind)</p>
 
     <form id="journalForm">
-        <textarea name="response" placeholder="Your answer..." required></textarea>
+        <textarea name="response" placeholder="Your answer" required></textarea>
         <input type="text" name="name" placeholder="Your Name" required>
         <input type="email" name="email" placeholder="Your Email" required>
         <button type="submit">Submit</button>
