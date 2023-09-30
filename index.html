@@ -1,0 +1,24 @@
+<script>
+    document.getElementById('journalForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Here, you'll send the data to Google AppScript
+        var formData = new FormData(e.target);
+        
+        // Example: Send formData to Google AppScript
+        // You'll replace the URL below with your Google AppScript web app URL
+        fetch('https://script.google.com/macros/s/AKfycbzTmpGaURYPXU2uduYxd5EIvbfEP8IXF-mk__nwHPYWd5ukBH1_1q3cKYwi2fbjQ2u-bw/exec', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data.success) {
+                alert('Response saved! Check back in ');
+                
+            } else {
+                alert('Error saving response. Please try again.');
+            }
+        });
+    });
+</script>
